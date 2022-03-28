@@ -33,9 +33,9 @@ interface RetrofitService {
                 interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
 
                 val okHttpClient: OkHttpClient = OkHttpClient.Builder()
-                    .connectTimeout(1, TimeUnit.MINUTES)
-                    .readTimeout(30, TimeUnit.SECONDS)
-                    .writeTimeout(15, TimeUnit.SECONDS)
+                    .connectTimeout(1, TimeUnit.MINUTES) // will wait actually establish a network connection to the server
+                    .readTimeout(30, TimeUnit.SECONDS) // will wait to receive data once that connection has established
+                    .writeTimeout(15, TimeUnit.SECONDS) // retrofit will wait between right attempts to the server once that connection has been established
                     .addInterceptor(interceptor)
                     .addNetworkInterceptor { chain ->
                         val builder = chain.request().newBuilder()

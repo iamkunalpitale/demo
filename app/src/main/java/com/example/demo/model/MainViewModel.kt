@@ -175,7 +175,8 @@ class MainViewModel constructor(
         val filteredList1: ArrayList<UserModel> = ArrayList()
         for (i in 0 until list.size) {
             val text: String = list.get(i).name
-            if (text.contains(query)) {
+            val gender:String = list.get(i).gender
+            if (text.contains(query) || gender.contains(query)) {
                 filteredList1.add(list.get(i))
             }
         }
@@ -187,7 +188,8 @@ class MainViewModel constructor(
         val filteredList1: ArrayList<TodosModel> = ArrayList()
         for (i in 0 until list.size) {
             val text: String = list.get(i).title
-            if (text.contains(query)) {
+            val status: String = list.get(i).status
+            if (text.contains(query) || status.contains(query)) {
                 filteredList1.add(list.get(i))
             }
         }
