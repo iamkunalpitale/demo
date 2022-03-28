@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -22,12 +23,19 @@ class CreateUserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCreateUserBinding
     lateinit var viewModel: MainViewModel
+    lateinit var imgbtn: ImageButton
 
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        imgbtn = findViewById(R.id.backToMain)
+        imgbtn.setOnClickListener {
+            onBackPressed();
+
+        }
 
         initData()
         observeData()

@@ -10,4 +10,5 @@ class MainRepository constructor(private val retrofitService: RetrofitService) {
     suspend fun getAllTodos() = retrofitService.getAllTodos()
     suspend fun addUser(userModel: UserModel) = retrofitService.addUser(userModel)
 
+
 }

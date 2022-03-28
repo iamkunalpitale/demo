@@ -1,60 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="#fff">
 
-    <EditText
-        android:id="@+id/edit_word"
+    <RelativeLayout
+        android:id="@+id/rl_one_login"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/big_padding"
-        android:fontFamily="sans-serif-light"
-        android:hint="Name"
-        android:inputType="textAutoComplete"
-        android:minHeight="@dimen/min_height"
-        android:textSize="18sp" />
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/edit_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/big_padding"
-        android:fontFamily="sans-serif-light"
-        android:hint="Email"
-        android:inputType="textAutoComplete"
-        android:minHeight="@dimen/min_height"
-        android:textSize="18sp" />
+        <View
+            android:id="@+id/v_one_login"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="#33B3FF" />
 
-    <EditText
-        android:id="@+id/edit_gender"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/big_padding"
-        android:fontFamily="sans-serif-light"
-        android:hint="Gender"
-        android:inputType="textAutoComplete"
-        android:minHeight="@dimen/min_height"
-        android:textSize="18sp" />
+        <LinearLayout
+            android:id="@+id/ActionBarProductInfo"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:orientation="horizontal">
 
-    <EditText
-        android:id="@+id/edit_status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/big_padding"
-        android:fontFamily="sans-serif-light"
-        android:hint="Status"
-        android:inputType="textAutoComplete"
-        android:minHeight="@dimen/min_height"
-        android:textSize="18sp" />
+            <ImageButton
+                android:id="@+id/backToMain"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/ic_baseline_arrow_back_24" />
 
-    <Button
-        android:id="@+id/button_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/big_padding"
-        android:background="@color/purple_500"
-        android:text="@string/button_save"
-        android:textColor="@color/white" />
 
-</LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_two_login"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Create User"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold">
+
+            </TextView>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_one_login"
+        android:layout_width="360dp"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:elevation="10dp"
+        app:cardBackgroundColor="#fcfcfc"
+        app:cardCornerRadius="10dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="false"
+        card_view:cardElevation="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/edit_word"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/big_padding"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Name"
+                    android:inputType="textAutoComplete"
+                    android:minHeight="@dimen/min_height"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/edit_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/big_padding"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Email"
+                    android:inputType="textAutoComplete"
+                    android:minHeight="@dimen/min_height"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/edit_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/big_padding"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Gender"
+                    android:inputType="textAutoComplete"
+                    android:minHeight="@dimen/min_height"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/edit_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/big_padding"
+                    android:fontFamily="sans-serif-light"
+                    android:hint="Status"
+                    android:inputType="textAutoComplete"
+                    android:minHeight="@dimen/min_height"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/big_padding"
+                    android:background="#33B3FF"
+                    android:text="@string/button_save"
+                    android:textColor="#FFF" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

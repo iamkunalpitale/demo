@@ -1,6 +1,7 @@
 package com.example.demo
 
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,7 @@ class TodoActivity : AppCompatActivity() {
     lateinit var binding: ActivityTodoBinding
     private val adapter = TodoAdapter()
     lateinit var searchView: SearchView
+    lateinit var imgbtn: ImageButton
     var list = ArrayList<TodosModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +31,12 @@ class TodoActivity : AppCompatActivity() {
         binding = ActivityTodoBinding.inflate(layoutInflater)
         setContentView(binding.root)
         searchView = findViewById(R.id.searchView)
+
+        imgbtn = findViewById(R.id.backToMain)
+        imgbtn.setOnClickListener {
+            onBackPressed();
+
+        }
 
         initData()
         observeData()
