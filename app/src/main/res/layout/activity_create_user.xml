@@ -1,27 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-<EditText
-    android:id="@+id/edit_word"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="@dimen/min_height"
-    android:fontFamily="sans-serif-light"
-    android:hint="Create User"
-    android:inputType="textAutoComplete"
-    android:layout_margin="@dimen/big_padding"
-    android:textSize="18sp" />
+    <EditText
+        android:id="@+id/edit_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
+        android:fontFamily="sans-serif-light"
+        android:hint="Name"
+        android:inputType="textAutoComplete"
+        android:minHeight="@dimen/min_height"
+        android:textSize="18sp" />
 
-<Button
-android:id="@+id/button_save"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:background="@color/purple_500"
-android:text="@string/button_save"
-android:layout_margin="@dimen/big_padding"
-android:textColor="@color/white" />
+    <EditText
+        android:id="@+id/edit_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
+        android:fontFamily="sans-serif-light"
+        android:hint="Email"
+        android:inputType="textAutoComplete"
+        android:minHeight="@dimen/min_height"
+        android:textSize="18sp" />
 
-    </LinearLayout>
+    <EditText
+        android:id="@+id/edit_gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
+        android:fontFamily="sans-serif-light"
+        android:hint="Gender"
+        android:inputType="textAutoComplete"
+        android:minHeight="@dimen/min_height"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/edit_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
+        android:fontFamily="sans-serif-light"
+        android:hint="Status"
+        android:inputType="textAutoComplete"
+        android:minHeight="@dimen/min_height"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/big_padding"
+        android:background="@color/purple_500"
+        android:text="@string/button_save"
+        android:textColor="@color/white" />
+
+</LinearLayout>

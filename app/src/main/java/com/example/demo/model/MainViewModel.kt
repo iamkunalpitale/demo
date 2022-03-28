@@ -14,6 +14,7 @@ class MainViewModel constructor(
     private val appDatabase: AppDatabase
 ) : ViewModel() {
 
+    val successMessage = MutableLiveData<String>()
     val errorMessage = MutableLiveData<String>()
     val userList = MutableLiveData<List<UserModel>>()
     val todoList = MutableLiveData<List<TodosModel>>()
@@ -24,6 +25,29 @@ class MainViewModel constructor(
         onError("Exception handled: ${throwable.localizedMessage}")
     }
     val loading = MutableLiveData<Boolean>()
+
+
+
+    // List of Users
+    fun addUser(userModel: UserModel) {
+        job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {
+            loading.postValue(true)
+            try {
+                val response = mainRepository.addUser(userModel)
+                withContext(Dispatchers.Main) {
+                    if (response.isSuccessful) {
+                        onSuceess(response.message())
+                    } else {
+                        onError("Error : ${response.message()} ")
+                    }
+                }
+            } catch (e: java.lang.Exception) {
+                Log.d("TAG", e.printStackTrace().toString())
+            }
+
+        }
+
+    }
 
     // List of Users
     fun getAllUsers() {
@@ -135,11 +159,18 @@ class MainViewModel constructor(
         loading.value = false
     }
 
+    private fun onSuceess(message: String) {
+        successMessage.value = message
+        loading.value = false
+    }
+
     override fun onCleared() {
         super.onCleared()
         job?.cancel()
     }
 
+
+    // Search
     fun serachResult(query: String, list: ArrayList<UserModel>) {
         val filteredList1: ArrayList<UserModel> = ArrayList()
         for (i in 0 until list.size) {

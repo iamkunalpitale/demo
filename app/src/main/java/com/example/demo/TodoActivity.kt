@@ -1,8 +1,8 @@
 package com.example.demo
 
 import android.os.Bundle
-import android.view.Menu
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
@@ -21,12 +21,14 @@ class TodoActivity : AppCompatActivity() {
     lateinit var viewModel: MainViewModel
     lateinit var binding: ActivityTodoBinding
     private val adapter = TodoAdapter()
+    lateinit var searchView: SearchView
     var list = ArrayList<TodosModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTodoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        searchView = findViewById(R.id.searchView)
 
         initData()
         observeData()
@@ -55,6 +57,19 @@ class TodoActivity : AppCompatActivity() {
             Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })
 
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                var query = newText
+                query = query.toString().trim()
+                viewModel.serachTodosResult(query, list)
+                return true
+            }
+        })
+
 
     }
 
@@ -74,29 +89,5 @@ class TodoActivity : AppCompatActivity() {
 
     }
 
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
-        menuInflater.inflate(R.menu.menu_item, menu)
-
-        val item = menu!!.findItem(R.id.search_action)
-        val searchView = item.actionView as androidx.appcompat.widget.SearchView
-        searchView.queryHint = "Search Here"
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                var query = newText
-                query = query.toString().trim()
-                viewModel.serachTodosResult(query, list)
-                return true
-            }
-        })
-
-        return super.onCreateOptionsMenu(menu)
-
-    }
 
 }

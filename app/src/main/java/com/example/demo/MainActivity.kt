@@ -1,8 +1,11 @@
 package com.example.demo
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
@@ -16,6 +19,7 @@ import com.example.demo.model.UserModel
 import com.example.demo.repository.MainRepository
 import com.example.demo.view.ViewModelFactory
 import com.example.demo.util.NetworkUtil.Companion.hasNetwork
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var searchView: SearchView
@@ -32,6 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         initData()
         observeData()
+        onClick()
 
         if (hasNetwork(application))
             viewModel.getAllUsers()
@@ -39,6 +44,28 @@ class MainActivity : AppCompatActivity() {
             viewModel.getAllUsersFromDB()
         }
     }
+
+    private fun onClick() {
+
+        binding.fabAdd.setOnClickListener {
+            openCreateUserActivityForResult()
+        }
+
+    }
+
+    var resultLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                list.clear()
+                viewModel.getAllUsers()
+            }
+        }
+
+    fun openCreateUserActivityForResult() {
+        val intent = Intent(this, CreateUserActivity::class.java)
+        resultLauncher.launch(intent)
+    }
+
 
     private fun initData() {
         val retrofitService = RetrofitService.getInstance()

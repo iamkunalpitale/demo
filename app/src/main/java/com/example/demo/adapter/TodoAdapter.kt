@@ -38,17 +38,17 @@ class TodoAdapter : RecyclerView.Adapter<MainViewTodoHolder>() {
 
             holder.binding.title.text = user.title
             holder.binding.status.text = user.status
-            holder.binding.dueOn.text = user.due_on
+//            holder.binding.dueOn.text = user.due_on
 
 
 
         }
 
-        holder?.itemView.setOnClickListener {
-            Log.v("he00", "veda")
-            val intent = Intent(holder?.itemView.context, NewUserActivity::class.java)
-            holder.itemView.context.startActivity(intent)
-        }
+//        holder?.itemView.setOnClickListener {
+//            Log.v("he00", "veda")
+//            val intent = Intent(holder?.itemView.context, NewUserActivity::class.java)
+//            holder.itemView.context.startActivity(intent)
+//        }
 
 
     }

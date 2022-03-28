@@ -2,30 +2,48 @@ package com.example.demo.api
 
 import com.example.demo.model.TodosModel
 import com.example.demo.model.UserModel
+import com.example.demo.util.Constant.Companion.ACCESS_TOKEN
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import java.util.concurrent.TimeUnit
+
 
 interface RetrofitService {
 
     @GET("users")
-    suspend fun gellAllUsers() : Response<List<UserModel>>
+    suspend fun gellAllUsers(): Response<List<UserModel>>
+
+    @POST("users")
+    suspend fun addUser(@Body userModel: UserModel): Response<UserModel>
 
     @GET("todos")
-    suspend fun getAllTodos() : Response<List<TodosModel>>
+    suspend fun getAllTodos(): Response<List<TodosModel>>
 
     companion object {
         var retrofitService: RetrofitService? = null
-        fun getInstance() : RetrofitService {
+        fun getInstance(): RetrofitService {
             if (retrofitService == null) {
+                val interceptor = HttpLoggingInterceptor()
+                interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+
                 val okHttpClient: OkHttpClient = OkHttpClient.Builder()
                     .connectTimeout(1, TimeUnit.MINUTES)
                     .readTimeout(30, TimeUnit.SECONDS)
                     .writeTimeout(15, TimeUnit.SECONDS)
+                    .addInterceptor(interceptor)
+                    .addNetworkInterceptor { chain ->
+                        val builder = chain.request().newBuilder()
+                        builder.header("Authorization", "Bearer ${ACCESS_TOKEN}")
+                        return@addNetworkInterceptor chain.proceed(builder.build())
+                    }
                     .build()
+
                 val retrofit = Retrofit.Builder()
                     .baseUrl("https://gorest.co.in/public/v2/")
                     .client(okHttpClient)

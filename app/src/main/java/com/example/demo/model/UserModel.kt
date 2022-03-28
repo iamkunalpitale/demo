@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class UserModel(
-    @PrimaryKey val id: Int,
+    @PrimaryKey val id: Int?,
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "email") val email: String,
     @ColumnInfo(name = "gender") val gender: String,
