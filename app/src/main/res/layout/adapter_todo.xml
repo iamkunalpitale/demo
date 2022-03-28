@@ -9,7 +9,7 @@
     android:clickable="true"
     app:cardCornerRadius="10dp"
     app:cardElevation="20dp"
-    app:cardBackgroundColor="#89847F"
+    app:cardBackgroundColor="#FFFFFF"
     android:focusable="true">
 
     <LinearLayout
@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
-                android:textColor="#FFFF"
+                android:textColor="#131313"
                 android:textStyle="bold"
                 tools:text="abc" />
 
@@ -45,7 +45,7 @@
                 android:id="@+id/status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#FFFF"
+                android:textColor="#131313"
                 tools:text="Active" />
 
         </LinearLayout>
@@ -59,7 +59,7 @@
                 android:id="@+id/dueOn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#FFFF"
+                android:textColor="#131313"
                 tools:text="26-08-1989" />
 
 

@@ -66,6 +66,8 @@ class MainViewModel constructor(
 
     }
 
+
+
     // Add List of Users in LocalDatabse
     fun addAllUsersInDB(list: List<UserModel>) {
         job = CoroutineScope(Dispatchers.IO + exceptionHandler).launch {

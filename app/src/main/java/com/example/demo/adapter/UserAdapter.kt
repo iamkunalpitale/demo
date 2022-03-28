@@ -37,7 +37,7 @@ class UserDetailAdapter : RecyclerView.Adapter<MainViewHolder>() {
         val user = userList[position]
         if (ValidationUtil.validateUser(user)) {
             holder.binding.name.text = user.name
-          //  holder.binding.email.text = user.email
+            holder.binding.email.text = user.email
             holder.binding.gender.text = user.gender
           // holder.binding.status.text = user.status
 
