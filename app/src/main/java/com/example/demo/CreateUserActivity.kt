@@ -49,7 +49,7 @@ class CreateUserActivity : AppCompatActivity() {
 
             val name = binding.editWord.text.toString().trim()
             val email = binding.editEmail.text.toString().trim()
-            val gender = binding.editGender.text.toString().trim()
+            val gender = binding.spinner.selectedItem.toString()
             val status = binding.editStatus.text.toString().trim()
             val userModel =
                 UserModel(id = null, name = name, email = email, gender = gender, status = status)

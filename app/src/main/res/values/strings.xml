@@ -4,4 +4,9 @@
     <string name="button_save">Save</string>
     <string name="empty_not_saved">User not saved because it is empty.</string>
     <string name="add_word">Add User</string>
+
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
 </resources>

@@ -101,16 +101,15 @@
                     android:minHeight="@dimen/min_height"
                     android:textSize="18sp" />
 
-                <EditText
-                    android:id="@+id/edit_gender"
-                    android:layout_width="match_parent"
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/big_padding"
-                    android:fontFamily="sans-serif-light"
-                    android:hint="Gender"
-                    android:inputType="textAutoComplete"
-                    android:minHeight="@dimen/min_height"
-                    android:textSize="18sp" />
+                    android:layout_marginHorizontal="@dimen/big_padding"
+                    android:drawSelectorOnTop="true"
+                    android:layout_marginVertical="@dimen/medium_padding"
+                    android:entries="@array/gender"
+                    android:paddingVertical="@dimen/big_padding" />
 
                 <EditText
                     android:id="@+id/edit_status"
